@@ -16,16 +16,18 @@ Easy enough!  [Install the deb](http://www.vagrantup.com/downloads.html)
 wget https://releases.hashicorp.com/vagrant/1.8.4/vagrant_1.8.4_x86_64.deb
 sudo dpkg -i vagrant_1.8.4_x86_64.deb
 ```
+On Debian Testing as of July 2016, you can install the package vagrant from the repositories.
+
 ### Install libvirt and qemu-kvm
 
 Follow the [Ubuntu Libvirt Guide](https://help.ubuntu.com/lts/serverguide/libvirt.html)
 
 ```
 $ sudo apt-get update
-$ sudo apt-get install qemu-kvm libvirt-bin libvirt-dev
+$ sudo apt-get install qemu-kvm libvirt-bin libvirt-dev ruby-dev packer
 $ sudo adduser $USER libvirtd
 ```
-
+The third step isn't necessarily needed on Debian Testing as of July 2016.
 
 ### Install vagrant-libvirt gem
 
@@ -53,7 +55,7 @@ You can also build your own Vagrant box very easily using [Packer](https://www.p
 ```
 git clone https://github.com/chef/bento
 cd bento
-packer build -only qemu ubuntu-14.04.amd64.json
+packer build -only qemu ubuntu-14.04-amd64.json
 vagrant box add builds/ubuntu-14.04.libvirt.box --name "trusty64"
 ```
 
